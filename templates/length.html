@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Length converter</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>  
+    <div class="header">
+        <h1>Unit converter</h1>
+    </div>
+
+    <div class="pages">
+        <a href="/?origin=length" class="active">length</a>
+        <a href="/?origin=weight">weight</a>
+        <a href="/?origin=temperature">temperature</a>
+    </div>
+
+    <!-- Mostrar el resultado en caso de haber mandado la conversion -->
+    {% if result %}
+    <div class="result"> 
+        <h2>Result of your calculation</h2>
+        <p>{{result}}</p>
+        <a href="/?origin=length"><button type="button">Reset</button></a>
+
+    </div>
+
+    {% else %}
+    <!-- FORMULARIO -->
+     <form class="converter" method="POST">
+        <input type="hidden" name="origin" value="length">
+        <label for="number">Enter the length to convert</label>
+        <input type="number" id="value" name="value" placeholder="Value">
+        <label for="unit_from">Unit to convert from</label>
+        <select name="unit_from">
+            <option value="" disabled selected hidden>...</option>
+            <option value="millimeter">millimeter</option>
+            <option value="centimeter">centimeter</option>
+            <option value="meter">meter</option>
+            <option value="kilometer">kilometer</option>
+            <option value="inch">inch</option>
+            <option value="foot">foot</option>
+            <option value="yard">yard</option>
+            <option value="mile">mile</option>
+        </select>
+        <label for="unit_to">Unit to convert to</label>
+        <select name="unit_to">
+            <option value="" disabled selected hidden>...</option>
+            <option value="millimeter">millimeter</option>
+            <option value="centimeter">centimeter</option>
+            <option value="meter">meter</option>
+            <option value="kilometer">kilometer</option>
+            <option value="inch">inch</option>
+            <option value="foot">foot</option>
+            <option value="yard">yard</option>
+            <option value="mile">mile</option>
+        </select>
+        <button type="submit">Convert</button>
+     </form>
+     {% endif %}
+    
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weight converter</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+<body>  
+    <div class="header">
+        <h1>Unit converter</h1>
+    </div>
+
+    <div class="pages">
+        <a href="/?origin=length">length</a>
+        <a href="/?origin=weight" class="active">weight</a>
+        <a href="/?origin=temperature">temperature</a>
+    </div>
+
+    <!-- Mostrar el resultado en caso de haber mandado la conversion -->
+    {% if result %}
+    <div class="result"> 
+        <h2>Result of your calculation</h2>
+        <p>{{result}}</p>
+        <a href="/?origin=weight"><button type="button">Reset</button></a>
+    </div>
+
+    {% else %}
+    <!-- FORMULARIO -->
+     <form class="converter" method="POST">
+        <input type="hidden" name="origin" value="weight">
+        <label for="value">Enter the length to convert</label>
+        <input type="number" id="value" name="value" placeholder="Value">
+        <label for="unit_from">Unit to convert from</label>
+        <select name="unit_from">
+            <option value="" disabled selected hidden>...</option>
+            <option value="milligram">Miligram</option>
+            <option value="gram">Gram</option>
+            <option value="kilogram">Kilogram</option>
+            <option value="ounce">Ounce</option>
+            <option value="pound">Pound</option>
+        </select>
+
+        <!-- <input type="text" name="unit_from" id="unit_from"> -->
+        <label for="unit_to">Unit to convert to</label>
+        <select name="unit_to">
+            <option value="" disabled selected hidden>...</option>
+            <option value="milligram">Miligram</option>
+            <option value="gram">Gram</option>
+            <option value="kilogram">Kilogram</option>
+            <option value="ounce">Ounce</option>
+            <option value="pound">Pound</option>
+        </select>
+        <!-- <input type="text" name="unit_to" id="unit_to"> -->
+        <button type="submit">Convert</button>
+     </form>
+     {% endif %}
+    
+</body>
+</html>
